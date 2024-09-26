@@ -3,7 +3,7 @@ package Planets;
 public final class Earth extends PlanetMap implements Planet {
 
     private static Earth instance;
-    private static int idCounter = 0;
+
 
     private Earth(){
         addName("ru", EARTH_RU);
@@ -21,8 +21,5 @@ public final class Earth extends PlanetMap implements Planet {
     }
 
 
-    public static synchronized int getNextId() {
-        return ++idCounter;
 
-    }
 }

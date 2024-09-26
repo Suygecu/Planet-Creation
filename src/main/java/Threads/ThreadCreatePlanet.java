@@ -1,13 +1,12 @@
 package Threads;
 
 import Planets.*;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public  class ThreadCreatePlanet implements Runnable {
+public  class ThreadCreatePlanet extends IdGenerator implements Runnable {
 
     static Planet planet;
     static final ConcurrentLinkedQueue<Planet> planetQueue = new ConcurrentLinkedQueue<>();
@@ -17,6 +16,7 @@ public  class ThreadCreatePlanet implements Runnable {
         System.out.println("Проверка ввода: " + input);
         return input.matches(".*[а-яА-Я]+.*");
     }
+
 
     public static void createPlanet() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -45,7 +45,6 @@ public  class ThreadCreatePlanet implements Runnable {
 
             else if (key.equalsIgnoreCase(Planet.MOON_RU) || key.equalsIgnoreCase(Planet.MOON_EN)) {
                 planet = Moon.getInstance();
-
             }else {
                 planet = null;
                 System.out.println("Не правильный ввод " );

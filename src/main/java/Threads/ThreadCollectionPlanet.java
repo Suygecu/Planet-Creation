@@ -4,6 +4,8 @@ import Planets.*;
 
 import java.util.ArrayList;
 
+
+
 import static Threads.ThreadCreatePlanet.*;
 
 
@@ -13,6 +15,8 @@ public class ThreadCollectionPlanet implements Runnable {
     public ThreadCollectionPlanet() {
         planetCollection = new ArrayList<>();
     }
+
+
 
     @Override
     public void run() {
@@ -25,17 +29,17 @@ public class ThreadCollectionPlanet implements Runnable {
                 }
             }
         }
-        System.out.println("Коллекция планет завершена. \nВсего планет: " + planetCollection.size());
-        System.out.println("Cписок планет в коллекции");
+        System.out.println("Коллекция планет завершена. \n\nВсего планет: " + planetCollection.size());
+        System.out.println("Cписок планет: ");
         for (Planet p : planetCollection) {
             if(p instanceof Earth)
-                System.out.println(Earth.getNextId() + "." + planet.toString());
+                System.out.println(IdGenerator.getNextId() + "." + p);
              if (p instanceof Sun)
-                System.out.println(Sun.getNextId() + "." + planet.toString());
+                System.out.println(IdGenerator.getNextId() + "." + p);
              if(p instanceof Mercury)
-                System.out.println(Mercury.getNextId() + "." + planet.toString());
+                System.out.println(IdGenerator.getNextId() + "." + p);
              if(p instanceof Moon)
-                System.out.println(Moon.getNextId() + "." + planet.toString());
+                System.out.println(IdGenerator.getNextId() + "." + p);
         }
     }
 }
