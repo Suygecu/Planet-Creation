@@ -36,18 +36,19 @@ public  class ThreadCreatePlanet implements Runnable {
             }
             else if (key.equalsIgnoreCase(Planet.EARTH_RU) || key.equalsIgnoreCase(Planet.EARTH_EN)) {
                 planet = Earth.getInstance();
-                System.out.println("Я создал " + planet);
+                    System.out.println("Я создал " + planet );
             }
             else if (key.equalsIgnoreCase(Planet.MERCURY_RU) || key.equalsIgnoreCase(Planet.MERCURY_EN)) {
                 planet = Mercury.getInstance();
                 System.out.println("Я создал " + planet);
             }
+
             else if (key.equalsIgnoreCase(Planet.MOON_RU) || key.equalsIgnoreCase(Planet.MOON_EN)) {
                 planet = Moon.getInstance();
-                System.out.println("Я создал  " + planet);
+
             }else {
                 planet = null;
-                System.out.println("Не правильный ввод");
+                System.out.println("Не правильный ввод " );
 
             }
             if (planet != null) {
@@ -59,6 +60,7 @@ public  class ThreadCreatePlanet implements Runnable {
         }
         isRunning = false;
     }
+
 
     @Override
     public void run() {

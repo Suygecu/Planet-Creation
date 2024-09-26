@@ -11,6 +11,7 @@ public interface Planet {
      String SUN_RU = "Солнце";
      String EARTH_RU = "Земля";
      String MERCURY_RU = "Меркурий";
+
 }
 
 

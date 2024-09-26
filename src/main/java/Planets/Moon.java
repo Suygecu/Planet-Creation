@@ -1,15 +1,13 @@
 package Planets;
 
-import Planets.Planet;
-import Planets.PlanetMap;
-
 public final class Moon extends PlanetMap implements Planet {
 
     private static Moon instance;
+    private static int idCounter = 0;
 
     private Moon() {
-        addName("ru", MERCURY_RU);
-        addName("en", MERCURY_EN);
+        addName("ru", MOON_RU);
+        addName("en", MOON_EN);
 
     }
 
@@ -19,6 +17,12 @@ public final class Moon extends PlanetMap implements Planet {
 
         }
         return instance;
+    }
+
+
+    public static synchronized int getNextId() {
+        return ++idCounter;
+
     }
 
 }
