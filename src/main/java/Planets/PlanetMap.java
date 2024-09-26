@@ -1,7 +1,9 @@
+package Planets;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class PlanetMap implements Planet{
+public abstract class PlanetMap implements Planet {
 
     protected Map<String, String> nameByLanguage = new HashMap<>();
 

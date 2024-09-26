@@ -1,3 +1,7 @@
+package Threads;
+
+import Planets.Planet;
+
 import java.util.ArrayList;
 
 
@@ -11,9 +15,9 @@ public class ThreadCollectionPlanet implements Runnable {
 
     @Override
     public void run() {
-        while (Main.isRunning || !Main.planetQueue.isEmpty()) {
-            if (!Main.planetQueue.isEmpty()) {
-                Planet newPlanet = Main.planetQueue.poll();
+        while (ThreadCreatePlanet.isRunning || !ThreadCreatePlanet.planetQueue.isEmpty()) {
+            if (!ThreadCreatePlanet.planetQueue.isEmpty()) {
+                Planet newPlanet = ThreadCreatePlanet.planetQueue.poll();
                 if (newPlanet != null) {
                     planetCollection.add(newPlanet);
                     System.out.println("Планета \"" + newPlanet + "\" добавлена в коллекцию");

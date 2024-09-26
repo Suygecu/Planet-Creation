@@ -1,3 +1,8 @@
+package Planets;
+
+import Planets.Planet;
+import Planets.PlanetMap;
+
 public final class Moon extends PlanetMap implements Planet {
 
     private static Moon instance;
@@ -17,3 +22,4 @@ public final class Moon extends PlanetMap implements Planet {
     }
 
 }
+

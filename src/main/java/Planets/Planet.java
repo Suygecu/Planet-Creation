@@ -1,3 +1,5 @@
+package Planets;
+
 public interface Planet {
 
      String MOON_EN = "Moon";

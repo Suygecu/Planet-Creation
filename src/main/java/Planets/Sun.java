@@ -1,4 +1,6 @@
-public  class Sun extends PlanetMap implements Planet  {
+package Planets;
+
+public  class Sun extends PlanetMap implements Planet {
     private static Sun instance;
 
     private Sun(){
@@ -17,5 +19,6 @@ public  class Sun extends PlanetMap implements Planet  {
     }
 
 }
+
 
 

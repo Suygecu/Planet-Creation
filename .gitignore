@@ -1,4 +1,6 @@
 ### IntelliJ IDEA ###
+*.iml
+.idea/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
@@ -22,8 +24,29 @@ bin/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+### Visual Studio Code ###
 .vscode/
+
+### Gradle ###
+.gradle/
+/build/
+
+### Java ###
+*.class
+*.jar
+*.war
+*.ear
+
+### Logs and temporary files ###
+*.log
+*.tmp
+*.swp
 
 ### Mac OS ###
 .DS_Store
+.AppleDouble
+.LSOverride
+
+### Windows ###
+Thumbs.db
+ehthumbs.db

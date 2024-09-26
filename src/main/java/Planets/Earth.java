@@ -1,4 +1,9 @@
-public final class Earth extends PlanetMap implements Planet{
+package Planets;
+
+import Planets.Planet;
+import Planets.PlanetMap;
+
+public final class Earth extends PlanetMap implements Planet {
 
     private static Earth instance;
 

@@ -1,4 +1,9 @@
-public final class Mercury extends PlanetMap implements Planet{
+package Planets;
+
+import Planets.Planet;
+import Planets.PlanetMap;
+
+public final class Mercury extends PlanetMap implements Planet {
 
     private static Mercury instance;
 
@@ -12,3 +17,4 @@ public final class Mercury extends PlanetMap implements Planet{
         return instance;
     }
 }
+
