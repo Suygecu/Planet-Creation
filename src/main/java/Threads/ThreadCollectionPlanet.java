@@ -29,17 +29,16 @@ public class ThreadCollectionPlanet implements Runnable {
                 }
             }
         }
-        System.out.println("Коллекция планет завершена. \n\nВсего планет: " + planetCollection.size());
-        System.out.println("Cписок планет: ");
+        System.out.println("\nКоллекция планет завершена. \nВсего планет: " + planetCollection.size());
         for (Planet p : planetCollection) {
             if(p instanceof Earth)
-                System.out.println(IdGenerator.getNextId() + "." + p);
+                System.out.println(IdGenerator.getNextId() + ". " + p);
              if (p instanceof Sun)
-                System.out.println(IdGenerator.getNextId() + "." + p);
+                System.out.println(IdGenerator.getNextId() + ". " + p);
              if(p instanceof Mercury)
-                System.out.println(IdGenerator.getNextId() + "." + p);
+                System.out.println(IdGenerator.getNextId() + ". " + p);
              if(p instanceof Moon)
-                System.out.println(IdGenerator.getNextId() + "." + p);
+                System.out.println(IdGenerator.getNextId() + ". " + p);
         }
     }
 }
