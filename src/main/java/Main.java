@@ -14,14 +14,26 @@ public  class Main  {
 
 
         Thread thread1 = new Thread(new ThreadCollectionPlanet());
+        Thread thread2 = new Thread(new ThreadCollectionPlanet());
+        Thread thread3 = new Thread(new ThreadCollectionPlanet());
+        Thread thread4 = new Thread(new ThreadCollectionPlanet());
+        Thread thread5 = new Thread(new ThreadCollectionPlanet());
         thread1.start();
-
-
-        try {
+        thread2.start();
+        thread3.start();
+        thread4.start();
+        thread5.start();
+        try{
             thread.join();
+
             thread1.join();
+            thread2.join();
+            thread3.join();
+            thread4.join();
+            thread5.join();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
+
         }
     }
 

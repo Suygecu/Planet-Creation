@@ -1,17 +1,8 @@
 package Planets;
 
-import Planets.Planet;
-import Planets.PlanetMap;
+public final class Mercury implements Planet {
 
-public final class Mercury extends PlanetMap implements Planet {
-
-    private static Mercury instance;
-    private static int idCounter = 0;
-
-    private Mercury(){
-        addName("ru", MERCURY_RU);
-        addName("en", MERCURY_EN);
-    }
+    private volatile static Mercury instance;
 
     public static Mercury getInstance(){
 
@@ -20,11 +11,10 @@ public final class Mercury extends PlanetMap implements Planet {
         }
         return instance;
     }
+    @Override
+    public String toString(){
 
-
-    public static synchronized int getNextId() {
-        return ++idCounter;
-
+        return MERCURY_RU;
     }
 }
 

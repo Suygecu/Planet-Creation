@@ -1,15 +1,10 @@
 package Planets;
 
-public final class Moon extends PlanetMap implements Planet {
+public final class Moon  implements Planet {
 
-    private static Moon instance;
-    private static int idCounter = 0;
+    private volatile static Moon instance;
 
-    private Moon() {
-        addName("ru", MOON_RU);
-        addName("en", MOON_EN);
 
-    }
 
     public static Moon getInstance() {
         if (instance == null) {
@@ -18,12 +13,10 @@ public final class Moon extends PlanetMap implements Planet {
         }
         return instance;
     }
+    @Override
+    public String toString(){
 
-
-    public static synchronized int getNextId() {
-        return ++idCounter;
-
+        return MOON_EN;
     }
-
 }
 
