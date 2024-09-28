@@ -1,64 +1,70 @@
 package Threads;
 
 import Planets.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
-public  class ThreadCreatePlanet extends IdGenerator implements Runnable {
+
+
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.TimeUnit;
+
+public class ThreadCreatePlanet extends IdGenerator implements Runnable {
 
     static Planet planet;
     static final ConcurrentLinkedQueue<Planet> planetQueue = new ConcurrentLinkedQueue<>();
     static volatile boolean isRunning = true;
+    private int randomNumberMax = 10;
+
+    public static final int TIME_SLEEP = 1;
+
+    public int generationRandomNumber() {
+
+        return  (int) Math.floor(Math.random() * randomNumberMax);
+
+    }
+
+
+    public static void threadSleep( Thread thread) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(TIME_SLEEP);
+    }
+
 
     @Override
     public void run() {
-        createPlanet();
-    }
-
-
-    public static boolean isRussian(String input) {
-        return input.matches(".*[а-яА-Я]+.*");
-    }
-
-
-    public static void createPlanet() {
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            String key = reader.readLine().toLowerCase().trim();
-
-            while (key != null && !(key.equalsIgnoreCase("exist") || key.equalsIgnoreCase("выход"))) {
-                if (isRussian(key)) {
-                    PlanetMap.setLanguage("ru");
-                } else {
-                    PlanetMap.setLanguage("en");
-                }
-
-                if (key.equalsIgnoreCase(Planet.SUN_RU) || key.equalsIgnoreCase(Planet.SUN_EN)) {
-                    planet = Sun.getInstance();
-                    System.out.println("Новая планета \"" + planet + " " + "\"создана");
-                } else if (key.equalsIgnoreCase(Planet.EARTH_RU) || key.equalsIgnoreCase(Planet.EARTH_EN)) {
-                    planet = Earth.getInstance();
-                    System.out.println("Новая планета \"" + planet + " " + "\"создана");
-                } else if (key.equalsIgnoreCase(Planet.MERCURY_RU) || key.equalsIgnoreCase(Planet.MERCURY_EN)) {
-                    planet = Mercury.getInstance();
-                    System.out.println("Новая планета \"" + planet + " " + "\"создана");
-                } else if (key.equalsIgnoreCase(Planet.MOON_RU) || key.equalsIgnoreCase(Planet.MOON_EN)) {
-                    planet = Moon.getInstance();
-                    System.out.println("Новая планета \"" + planet + " " + "\"создана");
-                } else {
-                    planet = null;
-                    System.out.println("Не правильный ввод ");
-                }
-
-                if (planet != null) {
-                    planetQueue.add(planet);
-                }
-                key = reader.readLine().toLowerCase().trim();
-            }
-            isRunning = false;
-        } catch (IOException e) {
+        try {
+            createPlanet();
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
+
+
+    public void createPlanet() throws InterruptedException {
+        while (true) {
+                threadSleep(Thread.currentThread());
+            int resultRandomNumber = generationRandomNumber();
+            if (resultRandomNumber < 3) {
+                planet = Moon.getInstance();
+                System.out.println("create " + planet);
+            } else if (resultRandomNumber < 5 && resultRandomNumber > 3) {
+                planet = Earth.getInstance();
+                System.out.println("create " + planet);
+            } else if (resultRandomNumber < 7 && resultRandomNumber > 5) {
+                planet = Mercury.getInstance();
+                System.out.println("create " + planet);
+            } else if (resultRandomNumber < 10 && resultRandomNumber > 7) {
+                planet = Sun.getInstance();
+                System.out.println("create " + planet);
+            }else{ planet = null;
+            }
+            if (planet  != null){
+                planetQueue.add(planet);
+                System.out.println("add planet " + planet);
+            }
+            isRunning = false;
+        }
+
+    }
+
 }
+
+
