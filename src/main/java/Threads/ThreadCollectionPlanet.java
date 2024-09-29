@@ -12,7 +12,7 @@ import static Threads.ThreadCreatePlanet.*;
 
 
 public class ThreadCollectionPlanet implements Runnable {
-    private  Map<Planet, Integer> planetCollection;
+    private final static Map<Planet, Integer> planetCollection = new ConcurrentHashMap<>();
     private final static int THREAD_COLLECTION_SLEEP = 1;
 
 
@@ -21,19 +21,10 @@ public class ThreadCollectionPlanet implements Runnable {
 
     }
 
-
-
-    public ThreadCollectionPlanet() {
-        planetCollection = new ConcurrentHashMap<>();
-
-    }
-
-
-
     @Override
     public  void run() {
         Planet newPlanet;
-        while ((newPlanet = ThreadCreatePlanet.planetQueue.poll()) != null || isRunning) {
+        while ((newPlanet = planetQueue.poll()) != null || isRunning) {
             try {
                 threadSleepCollection(Thread.currentThread());
             } catch (InterruptedException e) {
@@ -42,10 +33,11 @@ public class ThreadCollectionPlanet implements Runnable {
                 break;
             }
             if (newPlanet != null) {
+                synchronized (planetCollection) {
                     planetCollection.put(newPlanet, planetCollection.getOrDefault(newPlanet, 0) + 1);
                     System.out.println(Thread.currentThread().getName() + " Планета \""
                             + newPlanet + "\" добавлена в коллекцию " + planetCollection.get(newPlanet) + " раз");
-
+                }
             }
         }
     }

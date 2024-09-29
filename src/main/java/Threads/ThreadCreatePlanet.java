@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ThreadCreatePlanet implements Runnable {
 
-    static Planet planet;
-    static ConcurrentLinkedQueue<Planet> planetQueue = new ConcurrentLinkedQueue<>();
+
+    static  ConcurrentLinkedQueue<Planet> planetQueue = new ConcurrentLinkedQueue<>();
     static volatile boolean isRunning = true;
     private int randomNumberMax = 10;
 
@@ -40,6 +40,7 @@ public class ThreadCreatePlanet implements Runnable {
 
     public void createPlanet() throws InterruptedException {
         while (isRunning) {
+            Planet planet;
             threadSleep(Thread.currentThread());
 
             int resultRandomNumber = generationRandomNumber();
