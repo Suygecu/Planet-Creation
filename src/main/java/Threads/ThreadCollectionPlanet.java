@@ -12,8 +12,8 @@ import static Threads.ThreadCreatePlanet.*;
 
 
 public class ThreadCollectionPlanet implements Runnable {
-    private final static Map<Planet, Integer> planetCollection = new ConcurrentHashMap<>();
-    private final static int THREAD_COLLECTION_SLEEP = 1;
+    private  static final Map<Planet, Integer> planetCollection = new ConcurrentHashMap<>();
+    private  static final int THREAD_COLLECTION_SLEEP = 1;
 
 
     public void threadSleepCollection (Thread thread) throws InterruptedException {

@@ -14,7 +14,7 @@ public final class Mercury implements Planet {
     @Override
     public String toString(){
 
-        return MERCURY_RU;
+        return MERCURY_EN;
     }
 }
 
